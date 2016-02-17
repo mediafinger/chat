@@ -1,3 +1,90 @@
 // Place all the styles related to the rooms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+* { margin: 0; }
+
+html {
+  height: 100%;
+  min-height: 100%;
+  position: relative;
+}
+
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 1rem;
+  line-height: 1.2rem;
+  margin: 3rem 0.3rem 4rem 0.3rem;  // keep space for fixed header and footer
+}
+
+header {
+  background-color: #fff;
+  top: 0;
+  height: 3rem;
+  left: 0;
+  position:fixed;
+  width: 100%;
+}
+
+footer {
+  background-color: #adf;
+  bottom: 0;
+  height: 4rem;
+  left: 0;
+  position:fixed;
+  width: 100%;
+}
+
+h1 {
+  color: #39c;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 2.4rem;
+  margin-bottom: 0.6rem;
+  margin-left: 0.3rem;
+}
+
+#messages {
+   margin-bottom: 0.6rem;
+   max-width: 80rem;
+   overflow: hidden;
+   height: 100%;
+   width: 100%;
+
+  .message {
+    margin-bottom: 0.3rem;
+    margin-left: 0.3rem;
+
+    .content { line-height: 1.6rem; }
+
+    .timestamp {
+      color: #bce;
+      font-size: 0.6rem;
+      margin-left: 0.6rem;
+    }
+  }
+}
+
+.input-form {
+  margin: 0.6rem 2.4rem 0.6rem 0.3rem;
+
+  .field {
+    display: flex;
+    width: 100%;
+
+    input {
+      flex: 1; // to make the box as wide as it's parent
+      font-size: 1rem;
+      line-height: 1.2rem;
+      margin-left: 1.2rem;
+    }
+
+    .label {
+      color: #39c;
+      font-size: 0.8rem;
+      line-height: 1.6rem;
+    }
+  }
+}
