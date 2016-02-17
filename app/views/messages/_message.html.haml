@@ -1,3 +1,6 @@
 - cache message do  # easy way to implement caching
   .message
-    = message.content
+    .content= message.content
+
+    -# not localized time display to not break caching
+    .timestamp= message.created_at.strftime("%H:%M  (UTC)  %d. %b %Y")
