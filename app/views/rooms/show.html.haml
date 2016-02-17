@@ -2,3 +2,13 @@
 
 .messages
   = render @messages
+
+%hr
+
+-# javascripts/channels/room.coffee contains the code that handles this input
+-#
+.input-form
+  %form
+    .field
+      .label Say something:
+      %input(type="text" data-behavior="room_speaker")
