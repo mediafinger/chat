@@ -21,7 +21,7 @@ App.room = App.cable.subscriptions.create "RoomChannel",
 # react to input submitted in form in views/rooms/show.html.haml
 #
 $(document).on 'keypress', 'input[class=js-room-new-message]', (event) ->
-  if event.keyCode is 13  # return = send
+  if event.target.value && event.keyCode is 13  # return = send
     current_user_id = $('meta[name=current-user]').attr('id')
     App.room.speak { current_user_id: current_user_id, data: event.target.value }
     event.target.value = ''
