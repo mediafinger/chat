@@ -1,7 +1,7 @@
 # Be sure to restart your server when you modify this file. Action Cable runs in an EventMachine loop that does not support auto reloading.
 class RoomChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "room_channel"  # usually the name would contain some id
+    stream_from "room_channel"
     stream_from "private_channel_of_#{current_user.id}"
   end
 
@@ -10,19 +10,14 @@ class RoomChannel < ApplicationCable::Channel
   end
 
   def speak(data)
-    message = data['message']['data']
-    user_id = data['message']['current_user_id']
-    user = User.find(user_id.to_i)
+    user = User.find data['current_user_id'].to_i
 
     if user == current_user
-      Message.create! content: message, user: User.find(user_id.to_i)
+      Message.create! content: data['message'], user: user
     end
   end
 
   def show_older(data)
-    timestamp = data['timestamp']['timestamp']
-    user_id = data['timestamp']['current_user_id']
-
-    MessagesBroadcastJob.perform_later timestamp: timestamp, user_id: user_id
+    MessagesBroadcastJob.perform_later timestamp: data['timestamp'], user_id: data['current_user_id']
   end
 end

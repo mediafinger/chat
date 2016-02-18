@@ -12,18 +12,18 @@ App.room = App.cable.subscriptions.create "RoomChannel",
     else if data['messages']
       $('#messages').append data['messages']
 
-  speak: (message) ->
-    @perform 'speak', message: message
+  speak: (data) ->
+    @perform 'speak', data
 
-  show_older: (timestamp) ->
-    @perform 'show_older', timestamp: timestamp
+  show_older: (data) ->
+    @perform 'show_older', data
 
 # react to input submitted in form in views/rooms/show.html.haml
 #
 $(document).on 'keypress', 'input[class=js-room-new-message]', (event) ->
   if event.target.value && event.keyCode is 13  # return = send
     current_user_id = $('meta[name=current-user]').attr('id')
-    App.room.speak { current_user_id: current_user_id, data: event.target.value }
+    App.room.speak { current_user_id: current_user_id, message: event.target.value }
     event.target.value = ''
     event.preventDefault()
 
