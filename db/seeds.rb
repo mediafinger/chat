@@ -1,12 +1,24 @@
 andy  = User.create! name: 'Andy'
-babe  = User.create! name: 'Babe'
+micky = User.create! name: 'Micky'
 laura = User.create! name: 'Laura'
 tom   = User.create! name: 'Tom'
 
-Message.create! created_at: 10.minutes.ago, content: 'Erster11111!!!!!!Elf', user: andy
-Message.create! created_at: 9.minutes.ago, content: '2T', user: babe
-Message.create! created_at: 8.minutes.ago, content: '1337', user: andy
-Message.create! created_at: 7.minutes.ago, content: 'Hallo', user: laura
-Message.create! created_at: 6.minutes.ago, content: ':-D', user: babe
-Message.create! created_at: 5.minutes.ago, content: 'Ich bin jetzt auch on!', user: tom
-Message.create! created_at: 4.minutes.ago, content: 'Willkommen im Neuland!', user: andy
+chat = Room.create! name: 'Chat room'
+gifs = Room.create! name: 'GIF room'
+
+Message.create! room: chat, created_at: 30.minutes.ago, user: andy,  content: 'Hello World!'
+Message.create! room: chat, created_at: 29.minutes.ago, user: micky, content: 'Ciao!'
+Message.create! room: chat, created_at: 28.minutes.ago, user: andy,  content: 'How are you doing today?'
+Message.create! room: chat, created_at: 27.minutes.ago, user: laura, content: 'Hola!'
+Message.create! room: chat, created_at: 26.minutes.ago, user: micky, content: 'Great :-) and you?'
+Message.create! room: chat, created_at: 25.minutes.ago, user: tom,   content: 'hey guyz'
+Message.create! room: chat, created_at: 24.minutes.ago, user: andy,  content: 'Me too :-)'
+
+Message.create! room: gifs, created_at: 30.minutes.ago, user: andy,  content: 'GIFs only - now words!'
+Message.create! room: gifs, created_at: 29.minutes.ago, user: micky, content: 'But...'
+Message.create! room: gifs, created_at: 28.minutes.ago, user: andy,  content: 'NO words!'
+Message.create! room: gifs, created_at: 27.minutes.ago, user: micky, content: 'But...'
+Message.create! room: gifs, created_at: 26.minutes.ago, user: micky, content: 'Maybe you should implement rendering of images then?'
+Message.create! room: gifs, created_at: 25.minutes.ago, user: tom,   content: 'ROFLOL'
+Message.create! room: gifs, created_at: 24.minutes.ago, user: andy,  content: 'ahem... yes, maybe.'
+Message.create! room: gifs, created_at: 23.minutes.ago, user: laura, content: 'thihihIHIHIHIHIHI'

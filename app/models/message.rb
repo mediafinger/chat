@@ -1,5 +1,6 @@
 class Message < ApplicationRecord
   belongs_to :user
+  belongs_to :room
 
   LIMIT = 5
   MAXIMUM_MESSAGE_LENGTH = 65535
@@ -9,8 +10,10 @@ class Message < ApplicationRecord
   #
   after_create_commit { MessageBroadcastJob.perform_later self }
 
-  validates :content, length: { in: 1..MAXIMUM_MESSAGE_LENGTH }  # TODO handle exceptions & add frontend validation
+  validates :content, length: { in: 1..MAXIMUM_MESSAGE_LENGTH } # TODO handle exceptions & add frontend validation
+  validates :room, presence: true
 
+  scope :in_room,    ->(room_id) { where(room: room_id) }
   scope :latest,     -> { limit(LIMIT).order(created_at: :desc) }
   scope :older_than, ->(timestamp) { where("created_at < (?)", timestamp).limit(LIMIT).order(created_at: :desc) }
 end
