@@ -1,0 +1,7 @@
+-# javascripts/channels/room.coffee contains the code that handles link click
+
+= render messages
+
+.show-more
+  %a.js-room-show-more{ "data-timestamp" => "#{messages.last.created_at.utc.iso8601}", :href => "#"}
+    show more

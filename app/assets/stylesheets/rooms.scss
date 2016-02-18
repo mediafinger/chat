@@ -46,6 +46,18 @@ h1 {
   margin-left: 0.3rem;
 }
 
+a {
+  color: #39c;
+  font-size: 0.8rem;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #39c;
+  font-size: 0.8rem;
+  text-decoration: underline;
+}
+
 #messages {
    margin-bottom: 0.6rem;
    max-width: 80rem;
@@ -66,6 +78,8 @@ h1 {
     }
   }
 }
+
+.show-more { margin-left: 0.3rem; }
 
 .input-form {
   margin: 0.6rem 2.4rem 0.6rem 0.3rem;
