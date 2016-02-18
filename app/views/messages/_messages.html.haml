@@ -2,6 +2,7 @@
 
 = render messages
 
-.show-more
-  %a.js-room-show-more{ "data-timestamp" => "#{messages.last.created_at.utc.iso8601}", :href => "#"}
-    show more
+- if messages.present?
+  .show-more
+    %a.js-room-show-more{ "data-timestamp" => "#{messages.last.created_at.utc.iso8601}", :href => "#"}
+      show more
