@@ -1,4 +1,6 @@
 class Message < ApplicationRecord
+  belongs_to :user
+
   LIMIT = 5
 
   # use after_create_commit to ensure the Message was written to the DB
