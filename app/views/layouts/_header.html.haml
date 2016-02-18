@@ -1,0 +1,8 @@
+%header
+  .page-name
+    %h1= @page_name || "Chat app demo"
+
+  - if @current_user.present?
+    .log-out
+      %span.user-info= "logged in as: #{@current_user.name} | "
+      = link_to "log out", session_path, method: :delete

@@ -9,4 +9,5 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     %meta{ :name => "current-user", :id => "#{@current_user.try(:id)}" }/
   %body
+    = render "layouts/header"
     = yield

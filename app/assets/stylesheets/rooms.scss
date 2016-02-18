@@ -21,11 +21,23 @@ body {
 
 header {
   background-color: #fff;
-  top: 0;
+  display: flex;
   height: 3rem;
   left: 0;
   position:fixed;
+  top: 0;
   width: 100%;
+
+  .page-name { flex: 1; }
+
+  .log-out {
+    flex: 2;
+    color: #39c;
+    font-size: 0.8rem;
+    line-height: 2.4rem;
+    margin-right: 1.2rem;
+    text-align: right;
+  }
 }
 
 footer {
