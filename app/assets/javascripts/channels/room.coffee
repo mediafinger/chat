@@ -20,7 +20,7 @@ App.room = App.cable.subscriptions.create "RoomChannel",
 
 # react to input submitted in form in views/rooms/show.html.haml
 #
-$(document).on 'keypress', '[data-behavior~=room_speaker]', (event) ->
+$(document).on 'keypress', 'input[class=js-room-new-message]', (event) ->
   if event.keyCode is 13  # return = send
     App.room.speak(event.target.value)
     event.target.value = ''

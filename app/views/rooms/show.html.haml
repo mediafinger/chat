@@ -1,3 +1,5 @@
+-# javascripts/channels/room.coffee contains the code that handles the form input
+
 %header
   %h1 Chat room
 
@@ -5,11 +7,9 @@
   #messages
     = render "messages/messages", messages: @messages
 
--# javascripts/channels/room.coffee contains the code that handles this input
--#
 %footer
   .input-form
     %form
       .field
         .label Say something nice:
-        %input(type="text" data-behavior="room_speaker")
+        %input.js-room-new-message{ type: "text" }
