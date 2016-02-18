@@ -28,10 +28,17 @@ header {
   top: 0;
   width: 100%;
 
-  .page-name { flex: 1; }
+  .page-name {
+    flex: 1;
+    flex-grow: 4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 
   .log-out {
     flex: 2;
+    flex-shrink: 0.25;
     color: #39c;
     font-size: 0.8rem;
     line-height: 2.4rem;
