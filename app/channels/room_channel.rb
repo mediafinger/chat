@@ -2,6 +2,7 @@
 class RoomChannel < ApplicationCable::Channel
   def subscribed
     stream_from "room_channel"  # usually the name would contain some id
+    stream_from "private_channel_of_#{current_user.id}"
   end
 
   def unsubscribed
