@@ -12,6 +12,9 @@ App.room = App.cable.subscriptions.create "RoomChannel",
   speak: (message) ->
     @perform 'speak', message: message
 
+  show_older: (timestamp) ->
+    @perform 'show_older', timestamp: timestamp
+
 # react to input submitted in form in views/rooms/show.html.haml
 #
 $(document).on 'keypress', '[data-behavior~=room_speaker]', (event) ->
@@ -19,3 +22,8 @@ $(document).on 'keypress', '[data-behavior~=room_speaker]', (event) ->
     App.room.speak(event.target.value)
     event.target.value = ''
     event.preventDefault()
+
+$(document).on "click", "a[class=js-room-show-more]", (event) ->
+  $(event.target).hide(0)
+  App.room.show_older $(this).data('timestamp')
+  event.preventDefault()

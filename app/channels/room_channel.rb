@@ -11,4 +11,8 @@ class RoomChannel < ApplicationCable::Channel
   def speak(data)
     Message.create! content: data['message']
   end
+
+  def show_older(data)
+    MessagesBroadcastJob.perform_later data['timestamp']
+  end
 end
