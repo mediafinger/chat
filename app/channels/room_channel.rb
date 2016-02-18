@@ -9,10 +9,19 @@ class RoomChannel < ApplicationCable::Channel
   end
 
   def speak(data)
-    Message.create! content: data['message']
+    message = data['message']['data']
+    user_id = data['message']['current_user_id']
+    user = User.find(user_id.to_i)
+
+    if user == current_user
+      Message.create! content: message, user: User.find(user_id.to_i)
+    end
   end
 
   def show_older(data)
-    MessagesBroadcastJob.perform_later data['timestamp']
+    timestamp = data['timestamp']['timestamp']
+    user_id = data['timestamp']['current_user_id']
+
+    MessagesBroadcastJob.perform_later timestamp: timestamp, user_id: user_id
   end
 end

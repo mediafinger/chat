@@ -1,7 +1,7 @@
 class MessagesBroadcastJob < ApplicationJob
   queue_as :default
 
-  def perform(timestamp)
+  def perform(timestamp:, user_id:)
     ActionCable.server.broadcast "room_channel", messages: render_messages(timestamp)
   end
 

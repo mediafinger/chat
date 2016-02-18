@@ -22,11 +22,13 @@ App.room = App.cable.subscriptions.create "RoomChannel",
 #
 $(document).on 'keypress', 'input[class=js-room-new-message]', (event) ->
   if event.keyCode is 13  # return = send
-    App.room.speak(event.target.value)
+    current_user_id = $('meta[name=current-user]').attr('id')
+    App.room.speak { current_user_id: current_user_id, data: event.target.value }
     event.target.value = ''
     event.preventDefault()
 
 $(document).on "click", "a[class=js-room-show-more]", (event) ->
   $(event.target).hide(0)
-  App.room.show_older $(this).data('timestamp')
+  current_user_id = $('meta[name=current-user]').attr('id')
+  App.room.show_older { current_user_id: current_user_id, timestamp: $(this).data('timestamp') }
   event.preventDefault()
