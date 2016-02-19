@@ -3,7 +3,7 @@
     %h1= @page_name || "Chat app demo"
 
   .log-out
-    = link_to "change room", root_path
+    = link_to("change room", root_path) unless params[:action] == "index"
 
     - if @current_user.present?
       %span.user-info= " | "
