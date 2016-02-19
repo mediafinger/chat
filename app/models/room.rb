@@ -5,6 +5,8 @@ class Room < ApplicationRecord
 
   LIMIT = 5
 
+  after_create_commit { RoomBroadcastJob.perform_later self }
+
   validates :name, length: { minimum: 3 }
 
   scope :latest, -> { order(id: :desc).limit(LIMIT) }
