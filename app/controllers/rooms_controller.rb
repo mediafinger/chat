@@ -1,5 +1,10 @@
 class RoomsController < ApplicationController
   def show
-    @messages = Message.latest
+    @room = Room.find(params[:room_id])
+    @messages = Message.in_room(@room.id).latest
+  end
+
+  def index
+    @rooms = Room.latest
   end
 end

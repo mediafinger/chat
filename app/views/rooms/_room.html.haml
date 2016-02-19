@@ -1,0 +1,10 @@
+- cache room do  # easy way to implement caching
+  .room
+    .content
+      = link_to room.name, room_path(room), data: { no_turbolink: true }
+      = link_to("(unsubscribe)", subscription_path(room.id), method: :delete) if room.users.include?(@current_user)
+
+    -# not localized time display to not break caching
+    .timestamp
+      = room.created_at.strftime("%H:%M  (UTC)  %d. %b %Y")
+      = " Subscribers: #{ room.users.map(&:name).join(', ') }"

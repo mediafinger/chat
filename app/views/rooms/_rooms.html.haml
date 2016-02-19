@@ -1,0 +1,8 @@
+-# javascripts/channels/room.coffee contains the code that handles link click
+
+= render rooms
+
+- if rooms.present?
+  .show-more
+    %a.js-rooms-show-more{ "data-last-id" => "#{rooms.last.id}", :href => "#"}
+      show more

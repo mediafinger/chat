@@ -1,0 +1,14 @@
+-# javascripts/channels/room.coffee contains the code that handles the form input
+
+- @page_name = "Full house"
+
+%section
+  #rooms
+    = render "rooms/rooms", rooms: @rooms
+
+%footer
+  .input-form
+    %form
+      .field
+        .label Or create a new room:
+        %input.js-rooms-new-room{ type: "text" }

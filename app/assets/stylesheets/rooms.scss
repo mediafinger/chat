@@ -30,7 +30,7 @@ header {
 
   .page-name {
     flex: 1;
-    flex-grow: 4;
+    flex-grow: 3;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -38,7 +38,7 @@ header {
 
   .log-out {
     flex: 2;
-    flex-shrink: 0.25;
+    flex-shrink: 0.3;
     color: #39c;
     font-size: 0.8rem;
     line-height: 2.4rem;
@@ -67,24 +67,22 @@ h1 {
 
 a {
   color: #39c;
-  font-size: 0.8rem;
   text-decoration: none;
 }
 
 a:hover {
   color: #39c;
-  font-size: 0.8rem;
   text-decoration: underline;
 }
 
-#messages {
+#messages, #rooms {
    margin-bottom: 0.6rem;
    max-width: 80rem;
    overflow: hidden;
    height: 100%;
    width: 100%;
 
-  .message {
+  .message, .room {
     margin-bottom: 0.3rem;
     margin-left: 0.3rem;
 
@@ -98,7 +96,10 @@ a:hover {
   }
 }
 
-.show-more { margin-left: 0.3rem; }
+.show-more {
+  font-size: 0.8rem;
+  margin-left: 0.3rem;
+}
 
 .input-form {
   margin: 0.6rem 2.4rem 0.6rem 0.3rem;

@@ -1,6 +1,6 @@
 -# javascripts/channels/room.coffee contains the code that handles the form input
 
-- @page_name = "Chat room"
+- @page_name = @room.name if @room.present?
 
 %section
   #messages
