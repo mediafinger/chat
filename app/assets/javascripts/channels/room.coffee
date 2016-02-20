@@ -40,12 +40,14 @@ App.room = App.cable.subscriptions.create { channel: "RoomChannel", room_id: App
 #
 ## Messages:
 #
-$(document).on 'keypress', 'input[class=js-room-new-message]', (event) ->
-  if event.target.value && event.keyCode is 13  # return = send
-    current_user_id = $('meta[name=current-user]').attr('id')
-    App.room.create_message { room_id: App.room_id, current_user_id: current_user_id, message: event.target.value }
-    event.target.value = ''
-    event.preventDefault()
+$(document).on 'keydown', 'textarea[class=js-room-new-message]', (event) ->
+  # SHIFT + ENTER => line break | ENTER => send
+  if !event.shiftKey && event.keyCode is 13 && event.target.value
+      current_user_id = $('meta[name=current-user]').attr('id')
+      App.room.create_message { room_id: App.room_id, current_user_id: current_user_id, message: event.target.value }
+      event.target.value = ''
+      event.preventDefault()
+      event.stopPropagation()
 
 $(document).on "click", "a[class=js-room-show-more]", (event) ->
   $(event.target).hide(0)

@@ -16,4 +16,8 @@ class Message < ApplicationRecord
   scope :in_room,    ->(room_id) { where(room: room_id) }
   scope :latest,     -> { limit(LIMIT).order(created_at: :desc) }
   scope :older_than, ->(timestamp) { where("created_at < (?)", timestamp).limit(LIMIT).order(created_at: :desc) }
+
+  def to_html
+    ToHTMLService.perform content
+  end
 end
