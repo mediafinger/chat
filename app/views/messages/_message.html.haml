@@ -1,6 +1,6 @@
 - cache message do  # easy way to implement caching
   .message
-    .content= message.content
+    .content= message.to_html
 
     -# not localized time display to not break caching
     .timestamp

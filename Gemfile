@@ -26,6 +26,19 @@ gem 'jbuilder', '~> 2.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# Process / sanitize / transform user input (plain text or Markdown) into HTML
+gem 'html-pipeline'
+# AutolinkFilter
+gem 'rinku'
+# EmojiFilter
+gem 'gemoji'
+# MarkdownFilter
+gem 'github-markdown'
+# SanitizationFilter
+gem 'sanitize'
+# SyntaxHighlighting with RougeFilter
+gem 'html-pipeline-rouge_filter'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
