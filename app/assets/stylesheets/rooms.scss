@@ -75,6 +75,13 @@ a:hover {
   text-decoration: underline;
 }
 
+code {
+  background-color: #f8f8f8;
+  padding: 2px;
+  vertical-align: middle;
+}
+.highlight { background-color: #f8f8f8; }
+
 #messages, #rooms {
    margin-bottom: 0.6rem;
    max-width: 80rem;
