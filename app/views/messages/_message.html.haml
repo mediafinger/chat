@@ -3,6 +3,6 @@
     .content= message.to_html
 
     -# not localized time display to not break caching
-    .timestamp
+    .additional-info
       = message.created_at.strftime("%H:%M  (UTC)  %d. %b %Y")
       = " -- #{message.user&.name}" if message.user&.name

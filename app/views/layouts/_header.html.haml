@@ -2,9 +2,11 @@
   .page-name
     %h1= @page_name || "Chat app demo"
 
-  .log-out
-    = link_to("change room", root_path) unless params[:action] == "index"
+  .log-out.user-info
+    - unless params[:action] == "index"
+      |
+      = link_to("all rooms", root_path)
 
     - if @current_user.present?
-      %span.user-info= " | "
+      |
       = link_to "log out #{@current_user.name}", session_path, method: :delete
