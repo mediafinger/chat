@@ -9,6 +9,7 @@ class Room < ApplicationRecord
 
   validates :name, length: { minimum: 3 }
 
-  scope :latest, -> { order(id: :desc).limit(LIMIT) }
   scope :after, ->(last_id) { order(id: :desc).where("id < ?", last_id).limit(LIMIT) }
+  scope :latest, -> { order(id: :desc).limit(LIMIT) }
+  scope :subscriptions, ->(user_id) { joins(:subscriptions).where(subscriptions: {user_id: user_id}).order(name: :asc) }
 end

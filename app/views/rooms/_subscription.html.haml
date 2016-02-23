@@ -1,0 +1,9 @@
+.room
+  .content
+    = link_to room.name, room_path(room), data: { no_turbolink: true }
+
+    - if room.users.include?(@current_user)
+      = link_to("(unsubscribe)", subscription_path(room.id), method: :delete)
+
+  .additional-info
+    = "Subscribers: #{ room.users.map(&:name).join(', ') }"

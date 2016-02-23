@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   resource :session
 
-  resources :rooms, only: [:show, :index], param: :room_id
+  resources :rooms, only: [:show, :index], param: :room_id do
+    collection do
+      get :subscriptions
+    end
+  end
 
   resources :subscriptions, only: [:destroy], param: :room_id
 

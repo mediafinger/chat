@@ -7,4 +7,8 @@ class RoomsController < ApplicationController
   def index
     @rooms = Room.latest
   end
+
+  def subscriptions
+    @rooms = Room.subscriptions(current_user.id)
+  end
 end

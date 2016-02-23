@@ -7,6 +7,10 @@
       |
       = link_to("all rooms", root_path)
 
+    - unless params[:action] == "subscriptions"
+      |
+      = link_to("my rooms", subscriptions_rooms_path)
+
     - if @current_user.present?
       |
       = link_to "log out #{@current_user.name}", session_path, method: :delete

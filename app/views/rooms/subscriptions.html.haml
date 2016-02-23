@@ -1,0 +1,8 @@
+-# javascripts/channels/room.coffee contains the code that handles the form input
+
+- @page_name = "Your chat rooms"
+
+%section
+  #rooms
+    - @rooms.each do |room|
+      = render "rooms/subscription", room: room
