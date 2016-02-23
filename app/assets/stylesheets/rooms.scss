@@ -10,7 +10,9 @@ html {
   position: relative;
 }
 
-body {
+body {}
+
+#yace {
   background-color: #fff;
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
@@ -19,7 +21,7 @@ body {
   margin: 3rem 0.3rem 4rem 0.3rem;  // keep space for fixed header and footer
 }
 
-header {
+section.yace.navigation {
   background-color: #fff;
   display: flex;
   height: 3rem;
@@ -47,7 +49,7 @@ header {
   }
 }
 
-footer {
+section.yace.input {
   background-color: #adf;
   bottom: 0;
   height: 4rem;
@@ -132,7 +134,7 @@ code {
 
 // subscriptions / private chat
 
-.footer-private-chat {
+section.yace.create-private-chat {
   background-color: #adf;
   bottom: 0;
   height: 8rem;
