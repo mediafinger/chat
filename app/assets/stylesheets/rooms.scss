@@ -129,3 +129,29 @@ code {
     }
   }
 }
+
+// subscriptions / private chat
+
+.footer-private-chat {
+  background-color: #adf;
+  bottom: 0;
+  height: 8rem;
+  left: 0;
+  position:fixed;
+  width: 100%;
+}
+
+.input-form-private-chat {
+  margin: 0.6rem 2.4rem 0.6rem 0.3rem;
+
+  .field {
+    font-size: 1rem;
+    line-height: 1.2rem;
+    width: 100%;
+
+    select {
+      margin-left: 1.2rem;
+      width: 40%;
+    }
+  }
+}

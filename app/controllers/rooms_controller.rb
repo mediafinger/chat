@@ -9,6 +9,7 @@ class RoomsController < ApplicationController
   end
 
   def subscriptions
+    @users = User.where.not(id: current_user.id)
     @rooms = Room.subscriptions(current_user.id)
   end
 end

@@ -40,6 +40,18 @@ class RoomChannel < ApplicationCable::Channel
     Room.create!(name: data['name'])
   end
 
+  def create_private_room(data)
+    user = User.find(data['current_user_id'].to_i)
+    other_user = User.find(data['other_user_id'].to_i)
+
+    if user == current_user && other_user.present?
+      Room.create_private_room_for(current_user, other_user)
+
+      # TODO open just created private chat
+      # ActionCable.server.broadcast "channel", room: render_room(room)
+    end
+  end
+
   def show_more_rooms(data)
     RoomsBroadcastJob.perform_later(room_id: data['room_id'], user_id: data['current_user_id'])
   end

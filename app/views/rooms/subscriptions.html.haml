@@ -6,3 +6,9 @@
   #rooms
     - @rooms.each do |room|
       = render "rooms/subscription", room: room
+
+.footer-private-chat
+  .input-form-private-chat
+    %form
+      .field
+        = select_tag "users", options_from_collection_for_select(@users, "id", "name"), prompt: "Start a private chat with:", class: "js-start-private-chat"

@@ -36,6 +36,9 @@ App.room = App.cable.subscriptions.create { channel: "RoomChannel", room_id: App
   show_more_rooms: (data) ->
     @perform 'show_more_rooms', data
 
+  create_private_room: (data) ->
+    @perform 'create_private_room', data
+
 # react to input submitted in form in views/rooms/show.html.haml
 #
 ## Messages:
@@ -67,4 +70,12 @@ $(document).on "click", "a[class=js-rooms-show-more]", (event) ->
   $(event.target).hide(0)
   current_user_id = $('meta[name=current-user]').attr('id')
   App.room.show_more_rooms { current_user_id: current_user_id, room_id: $(this).data('last-id') }
+  event.preventDefault()
+
+## New Subscription / private room:
+#
+$(document).on "change", "select[class=js-start-private-chat]", (event) ->
+  $(event.target).hide(0)
+  current_user_id = $('meta[name=current-user]').attr('id')
+  App.room.create_private_room { current_user_id: current_user_id, other_user_id: event.target.value }
   event.preventDefault()
